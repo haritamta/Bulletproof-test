@@ -4,14 +4,14 @@
 
 Download or clone the project and run 
 
-$ npm install 
+$ `npm install`
 
 ## Running the app
 
 This app requires the local instance of mongoDB running.
 
-Run following command to start app:
-npm start
+Run following command to start app: 
+`npm start`
 
 This will run the server listening on localhost:3000
 
@@ -33,7 +33,7 @@ api-doc\swagger.yml
 
 Products
 
-Sample document
+`Sample document` 
 {
     "_id" : ObjectId("5aea97211af6f52638544d8a"),
     "productId" : 7865,
