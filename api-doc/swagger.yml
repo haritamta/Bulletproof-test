@@ -1,0 +1,236 @@
+swagger: "2.0"
+info:
+  description: |
+  version: "1.0.0"
+  title: "Product APIs"
+host: "localhost:3000"
+basePath: "/"
+tags:
+- name: "Product APIs"
+  description: 
+    Product inventory
+schemes:
+- "http"
+- "https"
+paths:
+  /product:
+    get:
+      tags:
+      - product
+      operationId: getProducts
+      summary: "Get product details."
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/productDetail"
+        500:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/errors"
+    post:
+      tags:
+      - product
+      operationId: "createProduct"
+      summary: "Create a product."
+      produces:
+        - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "A JSON object instance."
+        required: true
+        schema:
+          $ref: "#/definitions/productDetail"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/productDetail"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/errors"
+        404:
+          description: "Not Found"
+          schema:
+            $ref: "#/definitions/errors"
+        500:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/errors"
+      x-swagger-router-controller: product
+  
+  /product{id}:
+    get:
+      tags:
+      - product
+      operationId: getProductsById
+      summary: "Get a product details based on monogoDB id."
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "The product Mongo Id"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/productDetail"
+        500:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/errors"
+    put:
+      tags:
+      - product
+      operationId: "updateProduct"
+      summary: "Update a product."
+      produces:
+        - application/json
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "he product Mongo Id."
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "A JSON object instance."
+        required: true
+        schema:
+          $ref: "#/definitions/productDetail"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/productDetail"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/errors"
+        404:
+          description: "Not Found"
+          schema:
+            $ref: "#/definitions/errors"
+        500:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/errors"
+      x-swagger-router-controller: product
+    delete:
+      tags:
+      - product
+      operationId: deleteProductsById
+      summary: "Delete a product based on monogoDB id."
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "The product Mongo Id"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/productDetail"
+        500:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/errors"
+
+  /awsSnsAlert:
+    post:
+      tags:
+      - product
+      operationId: "sendAwsSnsMessage"
+      summary: "send Aws Sns Message."
+      produces:
+        - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "A JSON object instance."
+        required: true
+        schema:
+          $ref: "#/definitions/productDetail"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/productDetail"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/errors"
+        404:
+          description: "Not Found"
+          schema:
+            $ref: "#/definitions/errors"
+        500:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/errors"
+      x-swagger-router-controller: product
+
+  /swagger:
+      x-swagger-pipe: swagger_raw
+definitions:
+  # standard error messages
+  errors:
+    type: "object"
+    properties:
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/errorModel"
+  errorModel:
+    type: "object"
+
+  productDetail:
+    type: "object"
+    properties:
+        productId:
+          type: "number"
+        productCategory:
+          type: "string"
+        description:
+          type: "string"
+        unitPrice:
+          type: "number"
+        updatedDate:
+          type: "string"
+          format: date-time
+        updatedBy:
+          type: "string"
+        _id:
+          type: "string"
+        _v:
+          type: "number"
+        stores:
+          type: array
+          items:
+             $ref: "#/definitions/storeModel"
+
+  storeModel:
+    type: "object"
+    properties:
+        storeId:
+          type: "string"
+        storeName: 
+          type: "string"
+        latitude: 
+          type: "number"
+        longitude: 
+          type: "number"
+        currentStock: 
+          type: "number"
+        reorderLavel: 
+          type: "number"

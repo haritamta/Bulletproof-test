@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>{{ product.description }}</h1>
+  <dl class="list">
+    <dt>Product Id</dt>
+    <dd>{{ product.productId }}</dd>
+    <dt>Category</dt>
+    <dd>{{ product.category }}</dd>
+    <dt>Description</dt>
+    <dd>{{ product.description }}</dd>
+    <dt>Price</dt>
+    <dd>{{ product.unitPrice }}</dd>
+  </dl>
+  <div class="row">
+  <div class="col-md-12">
+    <a [routerLink]="['/product-edit', product._id]" class="btn btn-success">EDIT</a>
+  <button class="btn btn-danger" type="button" (click)="deleteProduct(product._id)">DELETE</button>
+  <a [routerLink]="['/products']" class="btn btn-success">RETURN</a>
+  </div>
+</div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Edit Product</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="updateProduct(product._id, product)" #productForm="ngForm">
+        <!-- <div class="form-group">
+          <label for="name">Product Id</label>
+          <input type="text" class="form-control" [(ngModel)]="product.productId" name="productId" readonly required>
+        </div>
+        <div class="form-group">
+          <label for="name">Description</label>
+          <input type="text" class="form-control" [(ngModel)]="product.description" name="description" readonly required>
+        </div> -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product Id</th>
+              <th>Description</th>
+              <th>Product Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let store of product.stores">
+              <td>{{ product.productId }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.productCategory }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Store Id</th>
+              <th>Store Name</th>
+              <th>Latitude</th>
+              <th>Longitude </th>
+              <th>Current Stock</th>
+              <th>Reorder Lavel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let store of product.stores">
+              <td>{{ store.storeId }}</td>
+              <td>{{ store.storeName }}</td>
+              <td>{{ store.lat }}</td>
+              <td>{{ store.long }}</td>
+              <td>{{ store.currentStock }}</td>
+              <td>{{ store.reorderLavel }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-group">
+          <label for="name">Product Price</label>
+          <input type="text" class="form-control" [(ngModel)]="product.unitPrice" name="unitPrice" required>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Update</button>
+          <a [routerLink]="['/products']" class="btn btn-success">RETURN</a>
+          <button class="btn btn-danger" type="button" (click)="deleteProduct(product._id)">DELETE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
