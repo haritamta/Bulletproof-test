@@ -25,7 +25,9 @@ http requests via postman.
 
 Run `npm test` to execute tests.
 
-## Swagger API document `api-doc\swagger.yml`
+## Swagger API document 
+
+`api-doc\swagger.yml`
 
 To view API docsument, open the above swagger.yml file in the online swagger editor: 
 https://editor.swagger.io/ 
