@@ -27,10 +27,13 @@ Run `npm test` to execute tests.
 
 ## Swagger API document 
 
-`api-doc\swagger.yml`
+`api-doc\swagger.yaml`
 
 To view API docsument, open the above swagger.yml file in the online swagger editor: 
 https://editor.swagger.io/ 
+
+OR
+`http://localhost:3000/api-docs`
 
 ## mongoDB collection name
 

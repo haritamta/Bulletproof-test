@@ -33,6 +33,8 @@
     "morgan": "^1.9.0",
     "rxjs": "^5.5.6",
     "serve-favicon": "^2.4.5",
+    "swagger-ui-express": "^3.0.8",
+    "yamljs": "^0.3.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

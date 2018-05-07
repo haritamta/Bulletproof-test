@@ -3,10 +3,10 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-// mongoose.connect('mongodb://localhost/mean-angular5', { useMongoClient: true, promiseLibrary: require('bluebird') })
 mongoose.connect('mongodb://localhost/mean-angular5', { promiseLibrary: require('bluebird') })
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err));
@@ -14,6 +14,9 @@ mongoose.connect('mongodb://localhost/mean-angular5', { promiseLibrary: require(
 const product = require('./routes/product');
 const snsAlert = require('./routes/aws-sns-alert');
 const app = express();
+
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./api-doc/swagger.yaml');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -23,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/products', express.static(path.join(__dirname, 'dist')));
 app.use('/product', product);
 app.use('/awsSnsAlert', snsAlert);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
