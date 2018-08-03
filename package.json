@@ -8,7 +8,9 @@
     "build": "ng build",
     "test": "mocha --timeout 10000",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +37,8 @@
     "serve-favicon": "^2.4.5",
     "swagger-ui-express": "^3.0.8",
     "yamljs": "^0.3.0",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "snyk": "^1.90.0"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.1",
@@ -60,5 +63,6 @@
     "chai-http": "^2.0.1",
     "mocha": "^2.4.5",
     "mockgoose": "^7.3.5"
-  }
+  },
+  "snyk": true
 }
