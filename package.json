@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +39,7 @@
     "swagger-ui-express": "^3.0.8",
     "yamljs": "^0.3.0",
     "zone.js": "^0.8.19",
-    "snyk": "^1.90.0"
+    "snyk": "^1.190.0"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.1",
