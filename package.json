@@ -9,7 +9,7 @@
     "test": "mocha --timeout 10000",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "npm run snyk-protect",
     "prepublish": "npm run snyk-protect"
   },
@@ -18,7 +18,7 @@
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
-    "@angular/core": "^5.2.0",
+    "@angular/core": "^11.0.5",
     "@angular/forms": "^5.2.0",
     "@angular/http": "^5.2.0",
     "@angular/platform-browser": "^5.2.0",
@@ -39,7 +39,7 @@
     "swagger-ui-express": "^3.0.8",
     "yamljs": "^0.3.0",
     "zone.js": "^0.8.19",
-    "snyk": "^1.190.0"
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.1",
